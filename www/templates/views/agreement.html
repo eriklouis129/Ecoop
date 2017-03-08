@@ -1,0 +1,437 @@
+<ion-view title="Vertrag anlegen" style="background-color:#2F3238;">
+  <ion-content padding="true" class="has-header">
+    <div>
+      <img src="https://s3.amazonaws.com/ionic-io-static/b5cWzkxJTSisr2TtoaUm_ECO_logo_img.png" style="display: block; width: 20%; height: auto; margin-left: auto;">
+    </div>
+    <h1 style="color:#FFFFFF;">Vertrag anlegen</h1>
+    <form class="list">
+      <ion-toggle toggle-class="toggle-positive" ng-model="showContractSearchForm">Bestandskunde</ion-toggle>
+    </form>
+    <div ng-show="showContractSearchForm">
+      <form class="list">
+        <label class="item item-input">
+          <span class="input-label">Vertrags-ID</span>
+          <input type="text" placeholder="">
+        </label>
+        <button class="button button-energized  button-block">Suchen</button>
+      </form>
+    </div>
+    <h2 style="color:#FFFFFF;">Kundendaten</h2>
+    <div class="button-bar">
+      <button ng-class="{'active': activeSectionContractCustomerType==1}" ng-click="changeSectionContractCustomerType(1)" class="button button-positive button-small button-block">Privat</button>
+      <button ng-class="{'active': activeSectionContractCustomerType==2}" ng-click="changeSectionContractCustomerType(2)" class="button button-positive button-small button-block">Gewerbe</button>
+    </div>
+    <div>
+      <form class="list">
+        <div ng-show="activeSectionContractCustomerType==1">
+          <form class="list">
+            <h3 style="color:#FFFFFF;">Persönliche Daten</h3>
+            <label class="item item-select">
+              <span class="input-label">Anrede</span>
+              <select>
+                <option>kein</option>
+                <option>Herr</option>
+                <option>Frau</option>
+                <option>Firma</option>
+                <option>Familie</option>
+                <option>Herr und Frau</option>
+              </select>
+            </label>
+            <label class="item item-select">
+              <span class="input-label">Titel</span>
+              <select>
+                <option>kein</option>
+                <option>Dr.</option>
+                <option>Prof.</option>
+                <option>Prof. Dr.</option>
+                <option>Dr. Dr.</option>
+                <option>Dipl.-Kfm.</option>
+                <option>Dipl.-Med.</option>
+                <option>Dipl.-Ing.</option>
+                <option>MR Dr.</option>
+                <option>OMR Dr.</option>
+                <option>Prof. Dr. Dr.</option>
+                <option>Prof. Dr. Ing</option>
+              </select>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Vorname</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Nachname</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Geburtstag</span>
+              <input type="date" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Postleitzahl</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Ort</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Kreis</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Straße</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Hausnummer</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Zusatz</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Telefon</span>
+              <input type="tel" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Fax</span>
+              <input type="tel" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input type="email" placeholder="">
+            </label>
+            <ion-toggle toggle-class="toggle-positive">Beitrittsgebühr erlassen</ion-toggle>
+          </form>
+        </div>
+      </form>
+    </div>
+    <div ng-show="activeSectionContractCustomerType == 2">
+      <form class="list">
+        <div>
+          <form class="list">
+            <h3 style="color:#FFFFFF;">Persönliche Daten</h3>
+            <label class="item item-input">
+              <span class="input-label">Name 1</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Name 2</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-select">
+              <span class="input-label">Ansprechpartner Anrede</span>
+              <select>
+                <option>kein</option>
+                <option>Herr</option>
+                <option>Frau</option>
+                <option>Firma</option>
+                <option>Familie</option>
+                <option>Herr und Frau</option>
+              </select>
+            </label>
+            <label class="item item-select">
+              <span class="input-label">Ansprechpartner Titel</span>
+              <select>
+                <option>kein</option>
+                <option>Dr.</option>
+                <option>Prof.</option>
+                <option>Prof. Dr.</option>
+                <option>Dr. Dr.</option>
+                <option>Dipl.-Kfm.</option>
+                <option>Dipl.-Med.</option>
+                <option>Dipl.-Ing.</option>
+                <option>MR Dr.</option>
+                <option>OMR Dr.</option>
+                <option>Prof. Dr. Dr.</option>
+                <option>Prof. Dr. Ing</option>
+              </select>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Ansprechpartner Vorname</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Ansprechpartner Nachname</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Postleitzahl</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Ort</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Kreis</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Straße</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Hausnummer</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Zusatz</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Telefon</span>
+              <input type="tel" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Fax</span>
+              <input type="tel" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input type="email" placeholder="">
+            </label>
+            <ion-toggle toggle-class="toggle-positive">Beitrittsgebühr erlassen</ion-toggle>
+          </form>
+        </div>
+      </form>
+    </div>
+    <form class="list">
+      <div class="spacer" style="height: 30px;"></div>
+      <h3 style="color:#FFFFFF;">Abweichende Rechnungsanschrift</h3>
+      <div class="button-bar">
+        <button ng-class="{'active': activeSectionDifferentBillingAddress==1}" ng-click="changeSectionDifferentBillingAddress(1)" class="button button-positive button-small button-block">Ja</button>
+        <button ng-class="{'active': activeSectionDifferentBillingAddress==2}" ng-click="changeSectionDifferentBillingAddress(2)" class="button button-positive button-small button-block">Nein</button>
+      </div>
+      <div ng-show="activeSectionDifferentBillingAddress==1">
+        <h4 style="color:#FFFFFF;">Personentyp</h4>
+        <div class="button-bar">
+          <button ng-class="{'active': activeSectionDifBilAddCustomerType==1}" ng-click="changeSectionDifBilAddCustomerType(1)" class="button button-positive button-small button-block">Privat</button>
+          <button ng-class="{'active': activeSectionDifBilAddCustomerType==2}" ng-click="changeSectionDifBilAddCustomerType(2)" class="button button-positive button-small button-block">Gewerbe</button>
+        </div>
+      </div>
+      <div ng-show="activeSectionDifBilAddCustomerType==2">
+        <form class="list">
+          <label class="item item-select">
+            <span class="input-label">Ansprechpartner Anrede</span>
+            <select>
+              <option>Firma</option>
+            </select>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Name 1</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Name 2</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">PLZ</span>
+            <input type="number" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Ort</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Straße</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Hausnummer</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Zusatz</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Postfach</span>
+            <input type="text" placeholder="">
+          </label>
+        </form>
+      </div>
+      <form class="list">
+        <div ng-show="activeSectionDifBilAddCustomerType==1">
+          <form class="list">
+            <label class="item item-select">
+              <span class="input-label">Anrede</span>
+              <select>
+                <option>kein</option>
+                <option>Herr</option>
+                <option>Frau</option>
+                <option>Firma</option>
+                <option>Familie</option>
+                <option>Herr und Frau</option>
+              </select>
+            </label>
+            <label class="item item-select">
+              <span class="input-label">Titel</span>
+              <select>
+                <option>kein</option>
+                <option>Dr.</option>
+                <option>Prof.</option>
+                <option>Prof. Dr.</option>
+                <option>Dr. Dr.</option>
+                <option>Dipl.-Kfm.</option>
+                <option>Dipl.-Med.</option>
+                <option>Dipl.-Ing.</option>
+                <option>MR Dr.</option>
+                <option>OMR Dr.</option>
+                <option>Prof. Dr. Dr.</option>
+                <option>Prof. Dr. Ing</option>
+              </select>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Vorname</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Nachname</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">PLZ</span>
+              <input type="number" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Ort</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Straße</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Hausnummer</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Zusatz</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Postfach</span>
+              <input type="text" placeholder="">
+            </label>
+            <div class="spacer" style="height: 100px;"></div>
+          </form>
+        </div>
+        <div>
+          <h3 style="color:#FFFFFF;">Lieferanschrift</h3>
+          <div class="button-bar">
+            <button ng-class="{'active': activeSectionDeliveryCustType==1}" ng-click="changeSectionDeliveryCustType(1)" class="button button-positive button-small button-block">Privatkunde</button>
+            <button ng-class="{'active': activeSectionDeliveryCustType==2}" ng-click="changeSectionDeliveryCustType(2)" class="button button-positive button-small button-block">Geschäftskunde</button>
+          </div>
+        </div>
+        <div ng-show="activeSectionDeliveryCustType==1">
+          <form class="list">
+            <label class="item item-select">
+              <span class="input-label">Anrede</span>
+              <select>
+                <option>kein</option>
+                <option>Herr</option>
+                <option>Frau</option>
+                <option>Firma</option>
+                <option>Familie</option>
+                <option>Herr und Frau</option>
+              </select>
+            </label>
+            <label class="item item-select">
+              <span class="input-label">Titel</span>
+              <select>
+                <option>kein</option>
+                <option>Dr.</option>
+                <option>Prof.</option>
+                <option>Prof. Dr.</option>
+                <option>Dr. Dr.</option>
+                <option>Dipl.-Kfm.</option>
+                <option>Dipl.-Med.</option>
+                <option>Dipl.-Ing.</option>
+                <option>MR Dr.</option>
+                <option>OMR Dr.</option>
+                <option>Prof. Dr. Dr.</option>
+                <option>Prof. Dr. Ing</option>
+              </select>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Vorname</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Nachname</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">PLZ</span>
+              <input type="number" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Ort</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Straße</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Hausnummer</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Zusatz</span>
+              <input type="text" placeholder="">
+            </label>
+          </form>
+        </div>
+        <div ng-show="activeSectionDeliveryCustType==2">
+          <form class="list">
+            <label class="item item-input">
+              <span class="input-label">Name 1</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Name 2</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">PLZ</span>
+              <input type="number" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Ort</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Straße</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Hausnummer</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Zusatz</span>
+              <input type="text" placeholder="">
+            </label>
+          </form>
+        </div>
+        <h3 style="color:#FFFFFF;">Zahlungsinformationen</h3>
+        <form class="list">
+          <ion-toggle toggle-class="toggle-positive">Authorize Debit</ion-toggle>
+          <label class="item item-input">
+            <span class="input-label">Kontoinhaber</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">IBAN</span>
+            <input type="text" placeholder="">
+          </label>
+          <a ui-sref="tabsController.lieferstelleAnlegen" class="button button-energized  button-block">Kundendaten speichern</a>
+        </form>
+      </form>
+    </form>
+  </ion-content>
+</ion-view>

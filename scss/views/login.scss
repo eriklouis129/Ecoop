@@ -1,0 +1,24 @@
+#login
+{
+	background: url(https://s3.amazonaws.com/ionic-io-static/vTI4DxdHQbmH3prDjfkG_lady.png) no-repeat center;
+	background-size:cover;
+
+	img.img-logo{
+		content: url('https://s3.amazonaws.com/ionic-io-static/SDPpBjluQ9Ovzclt7KLP_ECO_logo_img.png');
+		display: block; 
+		width: 40%; 
+		height: auto; 
+		margin-left: auto; 
+		margin-right: auto;
+		background-size:cover;
+	}
+
+	.spacer.top{
+		width: 748px; 
+		height: 32px;
+	}
+	.spacer.bottom{
+		width: 748px; 
+		height: 20px;
+	}
+}

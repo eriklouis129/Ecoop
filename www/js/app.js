@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('ecoop', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -26,48 +26,61 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   $stateProvider
 
     .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
-
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/root.html',
+      controller: 'RootController'
     })
-    .state('app.playlists', {
-      url: '/playlists',
+
+    .state('app.login', {
+      url: '/login',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/views/login.html',
+          controller: 'LoginController'
         }
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+    .state('app.tab', {
+      url: '/tab',
+      abstract: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/views/tabs.html',
+          controller: 'TabsController'
+        }
       }
-    }
-  });
+    })
+
+    .state('app.tab.calculator', {
+      url: '/calculator',
+      views: {
+        'tab-calculator': {
+          templateUrl: 'templates/views/calculator.html',
+          controller: 'CalculatorController'
+        }
+      }
+    })
+    .state('app.tab.agreement', {
+      url: '/agreement',
+      views: {
+        'tab-agreement': {
+          templateUrl: 'templates/views/agreement.html',
+          controller: 'AgreementController'
+        }
+      }
+    })
+    .state('app.tab.search', {
+      url: '/search',
+      views: {
+        'tab-search': {
+          templateUrl: 'templates/views/search.html',
+          controller: 'SearchController'
+        }
+      }
+    })
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/login');
 });

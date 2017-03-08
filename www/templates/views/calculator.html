@@ -1,0 +1,207 @@
+<ion-view title="Tarifrechner" style="background-color:#2F3238;">
+  <ion-content padding="true" class="has-header">
+    <div>
+      <img src="https://s3.amazonaws.com/ionic-io-static/HStNtkmZTwK869VCUKWS_ECO_logo_img.png" style="display: block; width: 20%; height: auto; margin-left: auto;">
+    </div>
+    <h1 style="color:#FFFFFF;">Preisrechner</h1>
+    <form class="list">
+      <div class="button-bar">
+        <button ng-class="{'active': activeSectionTariffType==1}" ng-click="changeSectionTariffType(1)" class="button button-positive button-small button-block">Strom</button>
+        <button ng-class="{'active': activeSectionTariffType==2}" ng-click="changeSectionTariffType(2)" class="button button-positive button-small button-block">Gas</button>
+      </div>
+      <div ng-show="activeSectionTariffType != 0" class="button-bar">
+        <button ng-class="{'active': activeSectionInnerTariffType==1}" ng-click="changeSectionInnerTariffType(1)" class="button button-positive button-small button-block">Basic</button>
+        <button ng-class="{'active': activeSectionInnerTariffType==2}" ng-click="changeSectionInnerTariffType(2)" class="button button-positive button-small button-block">Premium</button>
+      </div>
+      <div ng-show="activeSectionInnerTariffType==1" class="show-list-numbers-and-dots">
+        <p style="color:#FFFFFF;">
+          <strong>Basic:</strong> Es wird kein Genossenschaftsmitglied erzeugt. Vertragslaufzeit ab 1 Monat.</p>
+      </div>
+      <div ng-show="activeSectionInnerTariffType==2" class="show-list-numbers-and-dots">
+        <p style="color:#FFFFFF;">
+          <strong>Premium:</strong> Genossenschaftsmitglied wird erzeugt. Vertragslaufzeit mindestens 12 Monate.</p>
+      </div>
+      <div ng-show="activeSectionInnerTariffType != 0" class="button-bar">
+        <button ng-class="{'active': activeSectionCustomerType==1}" ng-click="changeSectionCustomerType(1)" class="button button-positive button-small button-block">Haushalt</button>
+        <button ng-class="{'active': activeSectionCustomerType==2}" ng-click="changeSectionCustomerType(2)" class="button button-positive button-small button-block">Gewerbe</button>
+      </div>
+      <div ng-show="activeSectionCustomerType==1 &amp;&amp; activeSectionTariffType==1" class="button-bar">
+        <button ng-class="{'active': activeSectionTariffChoice==1}" ng-click="changeSectionTariffChoice(1)" class="button button-positive button-small button-block">Wärmepumpe</button>
+        <button ng-class="{'active': activeSectionTariffChoice==2}" ng-click="changeSectionTariffChoice(2)" class="button button-positive button-small button-block">SLP</button>
+        <button ng-class="{'active': activeSectionTariffChoice==4}" ng-click="changeSectionTariffChoice(4)" class="button button-positive button-small button-block">HT/NT</button>
+      </div>
+      <div ng-show="activeSectionCustomerType==2 &amp;&amp; activeSectionTariffType==1" class="button-bar">
+        <button ng-class="{'active': activeSectionTariffChoice==1}" ng-click="changeSectionTariffChoice(1)" class="button button-positive button-small button-block">Wärmepumpe</button>
+        <button ng-class="{'active': activeSectionTariffChoice==2}" ng-click="changeSectionTariffChoice(2)" class="button button-positive button-small button-block">SLP</button>
+        <button ng-class="{'active': activeSectionTariffChoice==3}" ng-click="changeSectionTariffChoice(3)" class="button button-positive button-small button-block">RLM</button>
+        <button ng-class="{'active': activeSectionTariffChoice==4}" ng-click="changeSectionTariffChoice(4)" class="button button-positive button-small button-block">HT/NT</button>
+      </div>
+      <div ng-show="(activeSectionTariffChoice !=0 &amp;&amp; activeSectionTariffType ==1) || (activeSectionCustomerType !=0 &amp;&amp; activeSectionTariffType ==2)" class="button-bar">
+        <button ng-show="activeSectionInnerTariffType==1" ng-class="{'active': activeSectionContractTerm==1}" ng-click="changeSectionContractTerm(1)" class="button button-positive button-small button-block">1 Monat</button>
+        <button ng-class="{'active': activeSectionContractTerm==2}" ng-click="changeSectionContractTerm(2)" class="button button-positive button-small button-block">12 Monate</button>
+        <button ng-class="{'active': activeSectionContractTerm==3}" ng-click="changeSectionContractTerm(3)" class="button button-positive button-small button-block">24 Monate</button>
+        <button ng-show="activeSectionInnerTariffType==2" ng-class="{'active': activeSectionContractTerm==4}" ng-click="changeSectionContractTerm(4)" class="button button-positive button-small button-block">36 Monate</button>
+      </div>
+      <div ng-show="activeSectionContractTerm !=0 &amp;&amp; activeSectionTariffType == 1 &amp;&amp; activeSectionTariffChoice == 4" class="button-bar">
+        <button ng-class="{'active': activeSectionHeatFlowChoice==1}" ng-click="changeSectionHeatFlowChoice(1)" class="button button-positive button-small button-block">kein Wärmestrom</button>
+        <button ng-class="{'active': activeSectionHeatFlowChoice==2}" ng-click="changeSectionHeatFlowChoice(2)" class="button button-positive button-small button-block">Wärmepumpe</button>
+        <button ng-class="{'active': activeSectionHeatFlowChoice==3}" ng-click="changeSectionHeatFlowChoice(3)" class="button button-positive button-small button-block">Wärmespeicher</button>
+      </div>
+      <div ng-show="activeSectionTariffChoice == 3 &amp;&amp; activeSectionContractTerm !=0">
+        <form class="list">
+          <label class="item item-input">
+            <span class="input-label">Verbrauch </span>
+            <input type="number" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Lastspitze</span>
+            <input type="number" placeholder="">
+          </label>
+          <label class="item item-select">
+            <span class="input-label">Spannungsart</span>
+            <select>
+              <option>Niederspannung</option>
+              <option>Hochspannung</option>
+            </select>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">PLZ</span>
+            <input type="number" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Ort</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Straße</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Hausnummer</span>
+            <input type="text" placeholder="">
+          </label>
+        </form>
+      </div>
+      <div ng-show="activeSectionTariffChoice==4 &amp;&amp; (activeSectionHeatFlowChoice==2 || activeSectionHeatFlowChoice==3)">
+        <form class="list">
+          <div class="show-list-numbers-and-dots">
+            <p style="color:#FFFFFF;">Der Verbrauch von Wärmestrom wird über einen: </p>
+          </div>
+          <ion-checkbox>Doppeltarifzähler gemeinsam mit dem Haushaltsstrom erfasst.</ion-checkbox>
+          <ion-checkbox>vom Haushaltsstrom getrennten Doppeltarifzähler erfasst.</ion-checkbox>
+          <ion-checkbox>vom Haushaltsstrom getrennten Einzeltarifzähler erfasst.</ion-checkbox>
+        </form>
+      </div>
+      <div ng-show="(activeSectionContractTerm != 0 &amp;&amp; activeSectionTariffType ==1 &amp;&amp;(activeSectionTariffChoice ==1 || activeSectionTariffChoice ==2 )) || (activeSectionContractTerm !=0 &amp;&amp; activeSectionTariffType == 2)"
+       >
+        <form class="list">
+          <label class="item item-input">
+            <span class="input-label">Verbrauch </span>
+            <input type="number" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Postleitzahl</span>
+            <input type="number" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Ort</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Straße</span>
+            <input type="text" placeholder="">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Hausnummer</span>
+            <input type="text" placeholder="">
+          </label>
+        </form>
+      </div>
+    </form>
+    <div ng-show="activeSectionTariffChoice==4 &amp;&amp; activeSectionHeatFlowChoice !=0">
+      <form class="list">
+        <label class="item item-input">
+          <span class="input-label">Verbrauch HT</span>
+          <input type="number" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Verbrauch NT</span>
+          <input type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Postleitzahl</span>
+          <input type="number" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Ort</span>
+          <input type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Straße</span>
+          <input type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Hausnummer</span>
+          <input type="text" placeholder="">
+        </label>
+      </form>
+    </div>
+    <button ng-class="{'active': activeSectionCalculate==1}" ng-click="changeSectionCalculate(1)" ng-show="(activeSectionContractTerm != 0 &amp;&amp; activeSectionTariffType ==1 &amp;&amp; activeSectionTariffChoice != 4) || (activeSectionContractTerm !=0 &amp;&amp; activeSectionTariffType == 2) || (activeSectionTariffChoice==4 &amp;&amp; activeSectionHeatFlowChoice !=0)"
+      class="button button-energized  button-block">Rechnen!</button>
+    <div ng-show="activeSectionCalculate==1">
+      <h3 ng-show="activeSectionCustomerType==1 &amp;&amp; (activeSectionContractTerm == 1 || activeSectionContractTerm == 2 || activeSectionContractTerm == 3 || activeSectionContractTerm == 4)" style="color:#FFFFFF;">Alle Preise sind Brutto-Preise</h3>
+      <h3 ng-show="activeSectionCustomerType==2 &amp;&amp; (activeSectionContractTerm == 1 || activeSectionContractTerm == 2 || activeSectionContractTerm == 3 || activeSectionContractTerm == 4)"
+        style="color:#FFFFFF;">Alle Preise sind Netto-Preise</h3>
+      <div class="list card">
+        <ion-item class="item-icon-left dark">
+          <i class="icon ion-ios-bolt"></i>Ecoop Strom
+          <span class="item-note">675,69 €/Jahr</span>
+        </ion-item>
+        <div class="item item-body">
+          <div class="show-list-numbers-and-dots">
+            <p style="margin-top:0px;color:#000000;">
+              <strong>Arbeitspreis (netto):</strong> 15,91 ct/kWh ( brutto: 18,93 ct/kWh )
+              <br>
+              <strong>Grundpreis (netto):</strong> 7,55 €/Monat ( brutto: 8,98 €/Monat )
+              <br>1 Genossenschaftsanteil 10,00 €
+              <br>1 Beitrittsgebühr 35,00 €
+              <br>Netzbetreiber: Regensburg Netz GmbH</p>
+          </div>
+          <div class="button-bar">
+            <button class="button button-stable  button-block">Preisblatt drucken</button>
+            <button class="button button-stable  button-block">Preiskomponenten</button>
+            <a ui-sref="tabsController.angebotErstellen" class="button button-stable  button-block">Angebot erstellen</a>
+          </div>
+          <div class="button-bar">
+            <a ui-sref="tabsController.vertragAnlegen" class="button button-energized  button-block">Vertrag erstellen</a>
+          </div>
+        </div>
+      </div>
+      <div class="list card">
+        <ion-item class="item-icon-left dark">
+          <i class="icon ion-ios-bolt"></i>Ecoop Wärme
+          <span class="item-note">675,69 €/Jahr</span>
+        </ion-item>
+        <div class="item item-body">
+          <div class="show-list-numbers-and-dots">
+            <p style="margin-top:0px;color:#000000;">
+              <strong>Arbeitspreis (netto):</strong> 15,91 ct/kWh ( brutto: 18,93 ct/kWh )
+              <br>
+              <strong>Grundpreis (netto):</strong> 7,55 €/Monat ( brutto: 8,98 €/Monat )
+              <br>1 Genossenschaftsanteil 10,00 €
+              <br>1 Beitrittsgebühr 35,00 €
+              <br>Netzbetreiber: Regensburg Netz GmbH</p>
+          </div>
+          <div class="button-bar">
+            <button class="button button-stable  button-block">Preisblatt drucken</button>
+            <button class="button button-stable  button-block">Preiskomponenten</button>
+            <a ui-sref="tabsController.angebotErstellen" class="button button-stable  button-block">Angebot erstellen</a>
+          </div>
+          <div class="button-bar">
+            <a ui-sref="tabsController.vertragAnlegen" class="button button-energized  button-block">Vertrag erstellen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
