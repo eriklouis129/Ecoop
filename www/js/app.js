@@ -62,12 +62,16 @@ angular.module('ecoop', ['ionic'])
         }
       }
     })
-    .state('app.tab.agreement', {
-      url: '/agreement',
+    .state('app.tab.contract', {
+      url: '/contract',
       views: {
-        'tab-agreement': {
-          templateUrl: 'templates/views/agreement.html',
-          controller: 'AgreementController'
+        'tab-calculator': {
+          templateUrl: 'templates/views/contract.html',
+          controller: 'ContractController'
+        },
+        'tab-contract': {
+          templateUrl: 'templates/views/contract.html',
+          controller: 'ContractController'
         }
       }
     })
@@ -77,6 +81,36 @@ angular.module('ecoop', ['ionic'])
         'tab-search': {
           templateUrl: 'templates/views/search.html',
           controller: 'SearchController'
+        }
+      }
+    })
+
+    .state('app.tab.offer', {
+      url: '/offer',
+      views: {
+        'tab-calculator': {
+          templateUrl: 'templates/views/offer.html',
+          controller: 'OfferController'
+        }
+      }
+    })
+
+    // .state('app.tab.contract', {
+    //   url: '/contract',
+    //   views: {
+    //     'tab-calculator': {
+    //       templateUrl: 'templates/views/contract.html',
+    //       controller: 'ContractController'
+    //     }
+    //   }
+    // })
+
+    .state('app.tab.delivery', {
+      url: '/delivery',
+      views: {
+        'tab-calculator': {
+          templateUrl: 'templates/views/delivery.html',
+          controller: 'DeliveryController'
         }
       }
     })

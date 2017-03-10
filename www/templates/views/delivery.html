@@ -1,0 +1,252 @@
+<ion-view title="Lieferstelle anlegen">
+  <ion-content id="delivery" padding="true" class="has-header">
+    <h1 class="main-title">Lieferstelle anlegen</h1>
+    <div>
+      <h3 class="main-title">Energieart</h3>
+      <div class="button-bar">
+        <button ng-class="{'active': activeSectionTariffEnergyType==1}" 
+                ng-click="changeSectionTariffEnergyType(1)" 
+                class="button button-positive button-small button-block">
+                Strom
+        </button>
+        <button ng-class="{'active': activeSectionTariffEnergyType==2}" 
+                ng-click="changeSectionTariffEnergyType(2)" 
+                class="button button-positive button-small button-block">
+                Gas
+        </button>
+      </div>
+    </div>
+
+    <div ng-show="activeSectionTariffEnergyType != 0">
+      <h3 class="main-title">Tarifart</h3>
+      <div class="button-bar">
+        <button ng-class="{'active': activeSectionTariffModelType==1}" 
+                ng-click="changeSectionTariffModelType(1)" 
+                class="button button-positive button-small button-block">
+                Basic
+        </button>
+        <button ng-class="{'active': activeSectionTariffModelType ==2}" 
+                ng-click="changeSectionTariffModelType(2)" 
+                class="button button-positive button-small button-block">
+                Premium
+        </button>
+      </div>
+      <div ng-show="activeSectionTariffModelType == 1 || activeSectionTariffModelType==2" class="button-bar">
+        <button ng-class="{'active': activeSectionTariffCustomerType==1}" 
+                ng-click="changeSectionTariffCustomerType(1)" 
+                class="button button-positive button-small button-block">
+                Haushalt
+        </button>
+        <button ng-class="{'active': activeSectionTariffCustomerType==2}" 
+                ng-click="changeSectionTariffCustomerType(2)" 
+                class="button button-positive button-small button-block">
+                Gewerbe
+        </button>
+      </div>
+    </div>
+    <div ng-show="activeSectionTariffCustomerType !=0 &amp;&amp; activeSectionTariffEnergyType == 1">
+      <h3 class="main-title">Kundentyp</h3>
+      <div ng-show="activeSectionTariffCustomerType==1" class="button-bar">
+        <button ng-class="{'active': activeSectionTariffCustomerTypeProfile==1}" 
+                ng-click="changeSectionTariffCustomerTypeProfile(1)" 
+                class="button button-positive button-small button-block">
+                Wärmepumpe
+        </button>
+        <button ng-class="{'active': activeSectionTariffCustomerTypeProfile==2}" 
+                ng-click="changeSectionTariffCustomerTypeProfile(2)" 
+                class="button button-positive button-small button-block">
+                SLP
+        </button>
+        <button ng-class="{'active': activeSectionTariffCustomerTypeProfile==4}" 
+                ng-click="changeSectionTariffCustomerTypeProfile(4)" 
+                class="button button-positive button-small button-block">
+                HT/NT
+        </button>
+      </div>
+      <div ng-show="activeSectionTariffCustomerType==2" 
+      class="button-bar">
+        <button ng-class="{'active': activeSectionTariffCustomerTypeProfile==1}" 
+                ng-click="changeSectionTariffCustomerTypeProfile(1)" 
+                class="button button-positive button-small button-block">
+                Wärmepumpe
+        </button>
+        <button ng-class="{'active': activeSectionTariffCustomerTypeProfile==2}" 
+                ng-click="changeSectionTariffCustomerTypeProfile(2)" 
+                class="button button-positive button-small button-block">
+                SLP
+        </button>
+        <button ng-class="{'active': activeSectionTariffCustomerTypeProfile==3}" 
+                ng-click="changeSectionTariffCustomerTypeProfile(3)" 
+                class="button button-positive button-small button-block">
+                RLM
+        </button>
+        <button ng-class="{'active': activeSectionTariffCustomerTypeProfile==4}" 
+                ng-click="changeSectionTariffCustomerTypeProfile(4)" 
+                class="button button-positive button-small button-block">
+                HT/NT
+        </button>
+      </div>
+    </div>
+    <div ng-show="(activeSectionTariffCustomerTypeProfile !=0 &amp;&amp; activeSectionTariffEnergyType == 1) || (activeSectionTariffCustomerType !=0 &amp;&amp; activeSectionTariffEnergyType == 2)">
+      <h3 class="main-title">Vertragslaufzeit</h3>
+      <div class="button-bar">
+        <button ng-show="activeSectionTariffModelType==1" 
+                ng-class="{'active': activeSectionTariffContractTerm==1}" 
+                ng-click="changeSectionTariffContractTerm(1)" 
+                class="button button-positive button-small button-block">
+                1 Monat
+        </button>
+        <button ng-class="{'active': activeSectionTariffContractTerm==2}" 
+                ng-click="changeSectionTariffContractTerm(2)" 
+                class="button button-positive button-small button-block">
+                12 Monate
+        </button>
+        <button ng-class="{'active': activeSectionTariffContractTerm==3}" 
+                ng-click="changeSectionTariffContractTerm(3)" 
+                class="button button-positive button-small button-block">
+                24 Monate
+        </button>
+        <button ng-show="activeSectionTariffModelType==2" 
+                ng-class="{'active': activeSectionTariffContractTerm==4}" 
+                ng-click="changeSectionTariffContractTerm(4)" 
+                class="button button-positive button-small button-block">
+                36 Monate
+        </button>
+      </div>
+    </div>
+    <div ng-show="activeSectionTariffContractTerm != 0 &amp;&amp; activeSectionTariffCustomerTypeProfile == 4">
+      <h3 class="main-title">Wärmestrom - Details</h3>
+      <div class="button-bar">
+        <button ng-class="{'active': activeSectionTariffHeatFlowChoice==1}" 
+                ng-click="changeSectionTariffHeatFlowChoice(1)" 
+                class="button button-positive button-small button-block">
+                kein Wärmestrom
+        </button>
+        <button ng-class="{'active': activeSectionTariffHeatFlowChoice==2}" 
+                ng-click="changeSectionTariffHeatFlowChoice(2)" 
+                class="button button-positive button-small button-block">
+                Wärmepumpe
+        </button>
+        <button ng-class="{'active': activeSectionTariffHeatFlowChoice==3}" 
+                ng-click="changeSectionTariffHeatFlowChoice(3)" 
+                class="button button-positive button-small button-block">
+                Wärmespeicher
+        </button>
+      </div>
+    </div>
+    <div ng-show="(activeSectionTariffEnergyType == 1 &amp;&amp; activeSectionTariffCustomerTypeProfile == 4  &amp;&amp; activeSectionTariffHeatFlowChoice !=0)  || (activeSectionTariffEnergyType == 1 &amp;&amp; activeSectionTariffCustomerTypeProfile != 4 &amp;&amp; activeSectionTariffCustomerTypeProfile !=3 &amp;&amp; activeSectionTariffContractTerm !=0) || (activeSectionTariffEnergyType == 2 &amp;&amp; activeSectionTariffContractTerm != 0)"
+     >
+      <form class="list">
+
+        <div ng-repeat="field in data1">
+          <label class="item" ng-if="!(field.type == 'toggle')" 
+                ng-class="{'item-select': field.type == 'select', 'item-input': !(field.type == 'select')}">
+            <span class="input-label">{{field.title}}</span>
+            <select ng-if="field.type=='select'" ng-model="field.value" value="1">
+              <option ng-repeat="option in field.options">{{option}}</option>
+            </select>
+            <input type="text" ng-if="field.type=='text'" ng-model="field.value">
+            <input type="date" ng-if="field.type=='date'" ng-model="field.value">
+          </label>
+
+          <ion-toggle ng-if="field.type=='toggle'" toggle-class="toggle-positive">{{field.title}}</ion-toggle>
+        </div>
+      </form>
+    </div>
+
+    <div ng-show="activeSectionTariffContractTerm != 0 &amp;&amp; activeSectionTariffCustomerTypeProfile==3">
+      <form class="list">
+
+        <div ng-repeat="field in data2">
+          <label class="item" ng-if="!(field.type == 'toggle')" 
+                ng-class="{'item-select': field.type == 'select', 'item-input': !(field.type == 'select')}">
+            <span class="input-label">{{field.title}}</span>
+            <select ng-if="field.type=='select'" ng-model="field.value" value="1">
+              <option ng-repeat="option in field.options">{{option}}</option>
+            </select>
+            <input type="text" ng-if="field.type=='text'" ng-model="field.value">
+            <input type="date" ng-if="field.type=='date'" ng-model="field.value">
+          </label>
+
+          <ion-toggle ng-if="field.type=='toggle'" toggle-class="toggle-positive">{{field.title}}</ion-toggle>
+        </div>
+      </form>
+    </div>
+
+    <div ng-show="activeSectionTariffHeatFlowChoice != 0 || (activeSectionTariffCustomerTypeProfile !=4 &amp;&amp; activeSectionTariffCustomerTypeProfil !=3 &amp;&amp; activeSectionTariffContractTerm != 0)">
+      <form class="list">
+        <h3 class="main-title" ng-show="activeSectionTariffEnergyType==1">Angaben zur Stromversorgung</h3>
+        <h3 class="main-title" ng-show="activeSectionTariffEnergyType==2">Angaben zur Gasversorgung</h3>
+
+        <div ng-show="activeSectionTariffEnergyType==1 || activeSectionTariffEnergyType==2" class="button-bar">
+          <button ng-class="{'active': activeSectionTariffSupplyDetail==1}" 
+                  ng-click="changeSectionTariffSupplyDetail(1)" 
+                  class="button button-positive button-small button-block">
+                  Neueinzug
+          </button>
+          <button ng-class="{'active': activeSectionTariffSupplyDetail==2}" 
+                  ng-click="changeSectionTariffSupplyDetail(2)" 
+                  class="button button-positive button-small button-block">
+                  Lieferantenwechsel
+          </button>
+        </div>
+
+        <div>
+          <form class="list">
+
+             <div ng-show="activeSectionTariffSupplyDetail==1" ng-repeat="field in data3">
+              <label class="item" ng-if="!(field.type == 'toggle')" ng-class="{'item-select': field.type == 'select', 'item-input': !(field.type == 'select')}">
+                <span class="input-label">{{field.title}}</span>
+                <select ng-if="field.type=='select'" ng-model="field.value" value="1">
+                  <option ng-repeat="option in field.options">{{option}}</option>
+                </select>
+                <input type="text" ng-if="field.type=='text'" ng-model="field.value">
+                <input type="date" ng-if="field.type=='date'" ng-model="field.value">
+                <input type="number" ng-if="field.type=='number'" ng-model="field.value">
+              </label>
+
+              <ion-toggle ng-if="field.type=='toggle'" toggle-class="toggle-positive">{{field.title}}</ion-toggle>
+            </div>
+
+            <div ng-show="activeSectionTariffSupplyDetail==2" ng-repeat="field in data4">
+              <label class="item" ng-if="!(field.type == 'toggle')" ng-class="{'item-select': field.type == 'select', 'item-input': !(field.type == 'select')}">
+                <span class="input-label">{{field.title}}</span>
+                <select ng-if="field.type=='select'" ng-model="field.value" value="1">
+                  <option ng-repeat="option in field.options">{{option}}</option>
+                </select>
+                <input type="text" ng-if="field.type=='text'" ng-model="field.value">
+                <input type="date" ng-if="field.type=='date'" ng-model="field.value">
+                <input type="number" ng-if="field.type=='number'" ng-model="field.value">
+              </label>
+
+              <ion-toggle ng-if="field.type=='toggle'" toggle-class="toggle-positive">{{field.title}}</ion-toggle>
+            </div>
+            
+          </form>
+        </div>
+
+        <div class="spacer" style="height: 30px;"></div>
+        <div ng-show="activeSectionTariffSupplyDetail !=0">
+          <h2 class="main-title">Kontrolle &amp; Bestätigung</h2>
+          <form class="list">
+            <ion-toggle toggle-class="toggle-positive">Vollmacht</ion-toggle>
+            <ion-toggle toggle-class="toggle-positive">Newsletter</ion-toggle>
+            <label class="item item-input">
+              <span class="input-label">Aktionscode</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">VKNr</span>
+              <input type="text" placeholder="">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Externe ID</span>
+              <input type="text" placeholder="">
+            </label>
+            <button class="button button-energized  button-block">Lieferstelle anlegen</button>
+          </form>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

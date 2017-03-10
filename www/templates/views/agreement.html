@@ -1,9 +1,9 @@
-<ion-view title="Vertrag anlegen" style="background-color:#2F3238;">
-  <ion-content padding="true" class="has-header">
+<ion-view title="Vertrag anlegen">
+  <ion-content id="agreement" padding="true" class="has-header">
     <div>
-      <img src="https://s3.amazonaws.com/ionic-io-static/b5cWzkxJTSisr2TtoaUm_ECO_logo_img.png" style="display: block; width: 20%; height: auto; margin-left: auto;">
+      <img class="img-logo">
     </div>
-    <h1 style="color:#FFFFFF;">Vertrag anlegen</h1>
+    <h1 class="main-title">Vertrag anlegen</h1>
     <form class="list">
       <ion-toggle toggle-class="toggle-positive" ng-model="showContractSearchForm">Bestandskunde</ion-toggle>
     </form>
@@ -16,7 +16,7 @@
         <button class="button button-energized  button-block">Suchen</button>
       </form>
     </div>
-    <h2 style="color:#FFFFFF;">Kundendaten</h2>
+    <h2 class="main-title">Kundendaten</h2>
     <div class="button-bar">
       <button ng-class="{'active': activeSectionContractCustomerType==1}" ng-click="changeSectionContractCustomerType(1)" class="button button-positive button-small button-block">Privat</button>
       <button ng-class="{'active': activeSectionContractCustomerType==2}" ng-click="changeSectionContractCustomerType(2)" class="button button-positive button-small button-block">Gewerbe</button>
@@ -25,7 +25,7 @@
       <form class="list">
         <div ng-show="activeSectionContractCustomerType==1">
           <form class="list">
-            <h3 style="color:#FFFFFF;">Persönliche Daten</h3>
+            <h3 class="main-title">Persönliche Daten</h3>
             <label class="item item-select">
               <span class="input-label">Anrede</span>
               <select>
@@ -111,7 +111,7 @@
       <form class="list">
         <div>
           <form class="list">
-            <h3 style="color:#FFFFFF;">Persönliche Daten</h3>
+            <h3 class="main-title">Persönliche Daten</h3>
             <label class="item item-input">
               <span class="input-label">Name 1</span>
               <input type="text" placeholder="">
@@ -199,13 +199,13 @@
     </div>
     <form class="list">
       <div class="spacer" style="height: 30px;"></div>
-      <h3 style="color:#FFFFFF;">Abweichende Rechnungsanschrift</h3>
+      <h3 class="main-title">Abweichende Rechnungsanschrift</h3>
       <div class="button-bar">
         <button ng-class="{'active': activeSectionDifferentBillingAddress==1}" ng-click="changeSectionDifferentBillingAddress(1)" class="button button-positive button-small button-block">Ja</button>
         <button ng-class="{'active': activeSectionDifferentBillingAddress==2}" ng-click="changeSectionDifferentBillingAddress(2)" class="button button-positive button-small button-block">Nein</button>
       </div>
       <div ng-show="activeSectionDifferentBillingAddress==1">
-        <h4 style="color:#FFFFFF;">Personentyp</h4>
+        <h4 class="main-title">Personentyp</h4>
         <div class="button-bar">
           <button ng-class="{'active': activeSectionDifBilAddCustomerType==1}" ng-click="changeSectionDifBilAddCustomerType(1)" class="button button-positive button-small button-block">Privat</button>
           <button ng-class="{'active': activeSectionDifBilAddCustomerType==2}" ng-click="changeSectionDifBilAddCustomerType(2)" class="button button-positive button-small button-block">Gewerbe</button>
@@ -320,7 +320,7 @@
           </form>
         </div>
         <div>
-          <h3 style="color:#FFFFFF;">Lieferanschrift</h3>
+          <h3 class="main-title">Lieferanschrift</h3>
           <div class="button-bar">
             <button ng-class="{'active': activeSectionDeliveryCustType==1}" ng-click="changeSectionDeliveryCustType(1)" class="button button-positive button-small button-block">Privatkunde</button>
             <button ng-class="{'active': activeSectionDeliveryCustType==2}" ng-click="changeSectionDeliveryCustType(2)" class="button button-positive button-small button-block">Geschäftskunde</button>
@@ -418,7 +418,7 @@
             </label>
           </form>
         </div>
-        <h3 style="color:#FFFFFF;">Zahlungsinformationen</h3>
+        <h3 class="main-title">Zahlungsinformationen</h3>
         <form class="list">
           <ion-toggle toggle-class="toggle-positive">Authorize Debit</ion-toggle>
           <label class="item item-input">

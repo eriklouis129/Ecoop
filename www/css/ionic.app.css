@@ -9821,6 +9821,16 @@ a.button {
 .bar.bar-stable .title {
   color: #FFFFFF; }
 
+.bar-stable .button.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #FFFFFF;
+  font-size: 17px; }
+
+.main-title {
+  color: #FFFFFF; }
+
 #login {
   background: url(https://s3.amazonaws.com/ionic-io-static/vTI4DxdHQbmH3prDjfkG_lady.png) no-repeat center;
   background-size: cover; }
@@ -9838,3 +9848,75 @@ a.button {
   #login .spacer.bottom {
     width: 748px;
     height: 20px; }
+
+#calculator {
+  background-color: #2F3238; }
+  #calculator img.img-logo {
+    content: url("https://s3.amazonaws.com/ionic-io-static/SDPpBjluQ9Ovzclt7KLP_ECO_logo_img.png");
+    display: block;
+    width: 20%;
+    height: auto;
+    margin-left: auto; }
+  #calculator .description {
+    color: #FFFFFF; }
+  #calculator .detail {
+    margin-top: 0px;
+    color: #000000; }
+
+#agreement {
+  background-color: #2F3238; }
+  #agreement img.img-logo {
+    content: url("https://s3.amazonaws.com/ionic-io-static/SDPpBjluQ9Ovzclt7KLP_ECO_logo_img.png");
+    display: block;
+    width: 20%;
+    height: auto;
+    margin-left: auto; }
+  #agreement .description {
+    color: #FFFFFF; }
+  #agreement .detail {
+    margin-top: 0px;
+    color: #000000; }
+
+#search {
+  background-color: #2F3238; }
+  #search img.img-logo {
+    content: url("https://s3.amazonaws.com/ionic-io-static/SDPpBjluQ9Ovzclt7KLP_ECO_logo_img.png");
+    display: block;
+    width: 20%;
+    height: auto;
+    margin-left: auto; }
+  #search .description {
+    color: #FFFFFF; }
+  #search .detail {
+    margin-top: 0px;
+    color: #000000; }
+
+#offer {
+  background-color: #2F3238; }
+  #offer .description {
+    color: #FFFFFF; }
+  #offer .detail {
+    margin-top: 0px;
+    color: #000000; }
+
+#contract {
+  background-color: #2F3238; }
+  #contract img.img-logo {
+    content: url("https://s3.amazonaws.com/ionic-io-static/SDPpBjluQ9Ovzclt7KLP_ECO_logo_img.png");
+    display: block;
+    width: 20%;
+    height: auto;
+    margin-left: auto; }
+  #contract .description {
+    color: #FFFFFF; }
+  #contract .detail {
+    margin-top: 0px;
+    color: #000000; }
+
+#delivery {
+  background-color: #2F3238; }
+  #delivery .description {
+    color: #FFFFFF; }
+  #delivery .detail {
+    margin-top: 0px;
+    color: #000000; }
