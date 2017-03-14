@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('ecoop', ['ionic'])
+angular.module('ecoop', ['ionic', 'ionicUIRouter'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -53,6 +53,8 @@ angular.module('ecoop', ['ionic'])
       }
     })
 
+
+    //calculator tab
     .state('app.tab.calculator', {
       url: '/calculator',
       views: {
@@ -62,29 +64,6 @@ angular.module('ecoop', ['ionic'])
         }
       }
     })
-    .state('app.tab.contract', {
-      url: '/contract',
-      views: {
-        'tab-calculator': {
-          templateUrl: 'templates/views/contract.html',
-          controller: 'ContractController'
-        },
-        'tab-contract': {
-          templateUrl: 'templates/views/contract.html',
-          controller: 'ContractController'
-        }
-      }
-    })
-    .state('app.tab.search', {
-      url: '/search',
-      views: {
-        'tab-search': {
-          templateUrl: 'templates/views/search.html',
-          controller: 'SearchController'
-        }
-      }
-    })
-
     .state('app.tab.offer', {
       url: '/offer',
       views: {
@@ -95,25 +74,45 @@ angular.module('ecoop', ['ionic'])
       }
     })
 
-    // .state('app.tab.contract', {
-    //   url: '/contract',
-    //   views: {
-    //     'tab-calculator': {
-    //       templateUrl: 'templates/views/contract.html',
-    //       controller: 'ContractController'
-    //     }
-    //   }
-    // })
 
+    //contract tab
+    .state('app.tab.contract', {
+      url: '/contract',
+      views:{
+        'tab-calculator': {
+          templateUrl: 'templates/views/contract.html',
+          controller: 'ContractController'
+        },
+        'tab-contract': {
+          templateUrl: 'templates/views/contract.html',
+          controller: 'ContractController'
+        }
+      }
+    })
     .state('app.tab.delivery', {
       url: '/delivery',
       views: {
-        'tab-calculator': {
+        'tab-contract': {
           templateUrl: 'templates/views/delivery.html',
           controller: 'DeliveryController'
         }
       }
     })
+
+
+
+    //search tab
+    .state('app.tab.search', {
+      url: '/search',
+      views: {
+        'tab-search': {
+          templateUrl: 'templates/views/search.html',
+          controller: 'SearchController'
+        }
+      }
+    })
+
+    
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');

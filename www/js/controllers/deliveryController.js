@@ -1,6 +1,6 @@
 angular.module('ecoop')
 
-.controller('DeliveryController', function($scope, $ionicHistory)	{
+.controller('DeliveryController', function($scope, $ionicHistory, $ionicScrollDelegate)	{
 
 
 	$scope.data1 = [
@@ -72,6 +72,7 @@ angular.module('ecoop')
         $scope.activeSectionTariffContractTerm = 0;
         $scope.activeSectionTariffHeatFlowChoice = 0;
         $scope.activeSectionTariffSupplyDetail = 0;
+        $ionicScrollDelegate.resize();
     }
     
      //Changes class of button depending on click for tariff model type
@@ -85,6 +86,7 @@ angular.module('ecoop')
         $scope.activeSectionTariffContractTerm = 0;
         $scope.activeSectionTariffHeatFlowChoice = 0;
         $scope.activeSectionTariffSupplyDetail = 0;
+        $ionicScrollDelegate.resize();
     }
     
      //Changes class of button depending on click for customer type
@@ -97,6 +99,7 @@ angular.module('ecoop')
         $scope.activeSectionTariffContractTerm = 0;
         $scope.activeSectionTariffHeatFlowChoice = 0;
         $scope.activeSectionTariffSupplyDetail = 0;
+        $ionicScrollDelegate.resize();
     }
     
      //Changes class of button depending on click for customer type profile (Waermepumpe,SLP,RLM,HT/NT)
@@ -108,6 +111,7 @@ angular.module('ecoop')
         $scope.activeSectionTariffContractTerm = 0;
         $scope.activeSectionTariffHeatFlowChoice = 0;
         $scope.activeSectionTariffSupplyDetail = 0;
+        $ionicScrollDelegate.resize();
     }
     
     
@@ -119,6 +123,7 @@ angular.module('ecoop')
         //Reset value of following buttons
         $scope.activeSectionTariffHeatFlowChoice = 0;
         $scope.activeSectionTariffSupplyDetail = 0;
+        $ionicScrollDelegate.resize();
     }
     
      //Changes class of button depending on click for heat flow choice
@@ -128,6 +133,7 @@ angular.module('ecoop')
         $scope.activeSectionTariffHeatFlowChoice = s;
         //Reset value of following buttons
         $scope.activeSectionTariffSupplyDetail = 0;
+        $ionicScrollDelegate.resize();
     }
     
     
@@ -136,5 +142,6 @@ angular.module('ecoop')
     
     $scope.changeSectionTariffSupplyDetail = function(s){
         $scope.activeSectionTariffSupplyDetail = s;
+        $ionicScrollDelegate.resize();
     }
 })

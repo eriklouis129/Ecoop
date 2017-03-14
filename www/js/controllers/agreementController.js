@@ -1,6 +1,6 @@
 angular.module('ecoop')
 
-.controller('AgreementController', function($scope, $state, $ionicViewSwitcher, $ionicHistory)	{
+.controller('AgreementController', function($scope, $state, $ionicViewSwitcher, $ionicHistory, $ionicScrollDelegate)	{
 
 	$scope.showContractSearchForm = false;
     
@@ -13,6 +13,7 @@ angular.module('ecoop')
         $scope.activeSectionDifferentBillingAddress = 0;
         $scope.activeSectionDifBilAddCustomerType = 0;
         $scope.activeSectionDeliveryCustType = 0;
+        $ionicScrollDelegate.resize();
     }
     
      //Changes class of button depending on click for different billing address
@@ -23,6 +24,7 @@ angular.module('ecoop')
         //Resets value of following buttons to 0
         $scope.activeSectionDifBilAddCustomerType = 0;
         $scope.activeSectionDeliveryCustType = 0;
+        $ionicScrollDelegate.resize();
     }
     
      //Changes class of button depending on click for customer type when different billing address is yes
@@ -32,6 +34,7 @@ angular.module('ecoop')
         $scope.activeSectionDifBilAddCustomerType = s;
          //Resets value of following buttons to 0
         $scope.activeSectionDeliveryCustType = 0;
+        $ionicScrollDelegate.resize();
     }
     
      //Changes class of button depending on click for delivery address customer type 
@@ -39,6 +42,7 @@ angular.module('ecoop')
     
     $scope.changeSectionDeliveryCustType = function(s){
         $scope.activeSectionDeliveryCustType = s;
+        $ionicScrollDelegate.resize();
     }
 
 })
