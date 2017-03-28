@@ -152,6 +152,10 @@
             <span class="input-label">Lastspitze</span>
             <input type="number" placeholder="">
           </label>
+          <label class="item item-input">
+            <span class="input-label">Blindmehrarbeit</span>
+            <input type="number" placeholder="">
+          </label>
           <label class="item item-select">
             <span class="input-label">Spannungsart</span>
             <select>
@@ -282,7 +286,7 @@
           <div class="button-bar">
             <button class="button button-stable  button-block">Preisblatt drucken</button>
             <button class="button button-stable  button-block">Preiskomponenten</button>
-            <a ui-sref="app.tab.offer" class="button button-stable  button-block">Angebot erstellen</a>
+            <a ui-sref="app.tab.offer({customerType:tariffInfo.customerType})" class="button button-stable  button-block">Angebot erstellen</a>
           </div>
           <div class="button-bar">
             <a ui-sref="app.tab.contract" class="button button-energized  button-block">Vertrag erstellen</a>
@@ -307,7 +311,7 @@
           <div class="button-bar">
             <button class="button button-stable  button-block">Preisblatt drucken</button>
             <button class="button button-stable  button-block">Preiskomponenten</button>
-            <a ui-sref="app.tab.offer" class="button button-stable  button-block">Angebot erstellen</a>
+            <a ui-sref="app.tab.offer({customerType:tariffInfo.customerType})" class="button button-stable  button-block">Angebot erstellen</a>
           </div>
           <div class="button-bar">
             <a ui-sref="app.tab.contract" class="button button-energized  button-block">Vertrag erstellen</a>

@@ -17,6 +17,9 @@ angular.module('ecoop')
 	$scope.data2 = [
 		{title: 'NB-Lastprofil', type: 'text', value: ''}, 
 		{title: 'Vorjahresverbrauch', type: 'text', value: ''}, 
+        {title: 'Lastspitze', type: 'text', value: ''}, 
+        {title: 'Blindmehrarbeit', type: 'text', value: ''}, 
+        {title: 'Spannungsart', type: 'select', value: '', options: ['Niederspannung', 'Hochspannung']},
 		{title: 'PLZ der Lieferadresse', type: 'text', value: ''}, 
 		{title: 'Tarifname', type: 'text', value: ''}, 
 		{title: 'Vertragslaufzeit', type: 'select', value: '', options: ['12 Monate', '24 Monate', '36 Monate']}, 

@@ -65,7 +65,7 @@ angular.module('ecoop', ['ionic', 'ionicUIRouter'])
       }
     })
     .state('app.tab.offer', {
-      url: '/offer',
+      url: '/offer/:customerType',
       views: {
         'tab-calculator': {
           templateUrl: 'templates/views/offer.html',

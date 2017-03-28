@@ -1,6 +1,6 @@
 angular.module('ecoop')
 
-.controller('OfferController', function($scope, $state, $ionicViewSwitcher, $ionicHistory)	{
+.controller('OfferController', function($scope, $state, $stateParams, $ionicViewSwitcher, $ionicHistory, $ionicScrollDelegate)	{
 
 	$scope.privateFields = [
 								{title: 'Anrede', type: 'select', value: ''}, 
@@ -32,18 +32,20 @@ angular.module('ecoop')
 	$scope.addressFields = ['Herr', 'Frau', 'Firma', 'Familie', 'Herr und Frau'];
 	$scope.titleFields = ['kein', 'Dr.', 'Prof.', 'Prof. Dr.', 'Dr. Dr.', 'Dipl.-Kfm.', 'Dipl.-Med.', 'Dipl.-Ing.', 'Dr. Ing.', 'MR Dr.', 'OMR Dr.', 'Prof. Dr. Dr.', 'Prof. Dr. Ing.'];
 	$scope.offerInfo = {
-		customerType: 0,
+		customerType: $stateParams.customerType,
 		isCalculated: false
 	}
-    
+
     $scope.changeSectionOfferCustomerType = function(s){
     	$scope.offerInfo.customerType = s;
     	$scope.offerInfo.isCalculated = false;
+    	$ionicScrollDelegate.resize();
     }
     
      //Changes class of button depending on click for offer calculation
     $scope.changeSectionOfferCalculate = function(s){
     	$scope.offerInfo.isCalculated = true;
+    	$ionicScrollDelegate.resize();
     }
 
 })

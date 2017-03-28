@@ -95,7 +95,7 @@ angular.module('ecoop')
         //Resets value of following buttons to 0
         $scope.activeSectionDifferentBillingAddress = 0;
         $scope.activeSectionDifBilAddCustomerType = 0;
-        $scope.activeSectionDeliveryCustType = 0;
+        // $scope.activeSectionDeliveryCustType = 0;
         $ionicScrollDelegate.resize();
     }
     
@@ -106,7 +106,7 @@ angular.module('ecoop')
         $scope.activeSectionDifferentBillingAddress = s;
         //Resets value of following buttons to 0
         $scope.activeSectionDifBilAddCustomerType = 0;
-        $scope.activeSectionDeliveryCustType = 0;
+        // $scope.activeSectionDeliveryCustType = 0;
         $ionicScrollDelegate.resize();
     }
     
@@ -116,15 +116,15 @@ angular.module('ecoop')
     $scope.changeSectionDifBilAddCustomerType = function(s){
         $scope.activeSectionDifBilAddCustomerType = s;
          //Resets value of following buttons to 0
-        $scope.activeSectionDeliveryCustType = 0;
+        // $scope.activeSectionDeliveryCustType = 0;
         $ionicScrollDelegate.resize();
     }
     
      //Changes class of button depending on click for delivery address customer type 
-    $scope.activeSectionDeliveryCustType = 0;
+    // $scope.activeSectionDeliveryCustType = 0;
     
-    $scope.changeSectionDeliveryCustType = function(s){
-        $scope.activeSectionDeliveryCustType = s;
-        $ionicScrollDelegate.resize();
-    }
+    // $scope.changeSectionDeliveryCustType = function(s){
+    //     $scope.activeSectionDeliveryCustType = s;
+    //     $ionicScrollDelegate.resize();
+    // }
 })
