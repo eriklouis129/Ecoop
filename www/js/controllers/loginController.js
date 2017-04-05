@@ -1,6 +1,6 @@
 angular.module('ecoop')
 
-.controller('LoginController', function($scope, $state, $ionicViewSwitcher, $ionicHistory)	{
+.controller('LoginController', function($scope, $state, $ionicViewSwitcher, $ionicHistory, ApiService)	{
 
 	$scope.$on('$ionicView.beforeEnter', function(){
 
@@ -14,8 +14,13 @@ angular.module('ecoop')
 
 	$scope.login = function(email, pass){
 
-		// $ionicViewSwitcher.nextDirection('moveForward');
-		$state.go('app.tab.calculator')
+		ApiService.getSuppliers(['electricity', 'e.on']).then(
+			function(resSuccess){
+				$state.go('app.tab.calculator')
+			}, function(resError){
+				$state.go('app.tab.calculator')
+			}
+		)
 	}
 
 })
