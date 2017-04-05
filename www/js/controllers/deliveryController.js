@@ -1,6 +1,6 @@
 angular.module('ecoop')
 
-.controller('DeliveryController', function($scope, $ionicHistory, $ionicScrollDelegate)	{
+.controller('DeliveryController', function($scope, $ionicHistory, $ionicScrollDelegate, $timeout, $q, ApiService, CONSTANTS)	{
 
 
 	$scope.data1 = [
@@ -45,7 +45,7 @@ angular.module('ecoop')
 	];
 
 	$scope.data4 = [
-		{title: 'Vorversorger', type: 'text', value: ''}, 
+		{title: 'Vorversorger', type: 'autocomplete', value: ''}, 
 		{title: 'Vorlieferant BDEW Code', type: 'text', value: ''}, 
 		{title: 'bisherige Kundennummer', type: 'text', value: ''}, 
 		{title: 'Zählernummer', type: 'text', value: ''}, 
@@ -60,6 +60,51 @@ angular.module('ecoop')
 		{title: 'Selbst gekündigt?', type: 'toggle', value: ''}, 
 		{title: 'Kündigungstermin', type: 'date', value: ''}, 
 	];
+
+
+
+
+    $scope.clickedValueModel = "";
+    var inputChangedPromise;
+    $scope.searchSupplier = function (query) {
+
+        var defer = $q.defer();
+
+        if(inputChangedPromise){
+            $timeout.cancel(inputChangedPromise);
+        }
+        inputChangedPromise = $timeout(function() {
+            if (query) {
+
+                var energy_type = CONSTANTS.energy_types[$scope.activeSectionTariffEnergyType - 1];
+                var name = query;
+
+                ApiService.getSuppliers([energy_type, name]).then(
+                    function(resSuccess){
+                        if (resSuccess.data instanceof Array){
+                            defer.resolve({suppliers: resSuccess.data});
+                        }else if(typeof resSuccess.data === 'string'){
+                            defer.resolve({suppliers: [{name: resSuccess.data, code: "-1"}]});
+                        }
+                    }, function(resError){
+                        defer.reject(resError);
+                    }
+                )
+            }else{
+                defer.resolve({suppliers: []});
+            }
+        },1000);
+
+        return defer.promise;
+    };
+
+    $scope.supplierSelected = function (callback) {
+        // $scope.clickedValueModel = callback;
+        $scope.data4[1]['value'] = callback['item']['code'];
+    };
+
+
+
 
 	$scope.showBillingDueDate = false;
     

@@ -1,7 +1,7 @@
 angular.module('ecoop')
 
 .controller('LoginController', function($scope, $state, $ionicViewSwitcher, $ionicHistory, ApiService)	{
-
+                    
 	$scope.$on('$ionicView.beforeEnter', function(){
 
 		$ionicHistory.clearCache();

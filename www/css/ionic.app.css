@@ -9831,6 +9831,11 @@ a.button {
 .main-title {
   color: #FFFFFF; }
 
+.ion-autocomplete-container {
+  height: 60% !important; }
+  .ion-autocomplete-container .item-divider {
+    display: none !important; }
+
 #login {
   background: url(https://s3.amazonaws.com/ionic-io-static/vTI4DxdHQbmH3prDjfkG_lady.png) no-repeat center;
   background-size: cover; }

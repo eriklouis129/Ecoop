@@ -211,6 +211,16 @@
             <div ng-show="activeSectionTariffSupplyDetail==2" ng-repeat="field in data4">
               <label class="item" ng-if="!(field.type == 'toggle')" ng-class="{'item-select': field.type == 'select', 'item-input': !(field.type == 'select')}">
                 <span class="input-label">{{field.title}}</span>
+
+                <input ion-autocomplete type="text" ng-if="field.type=='autocomplete'" ng-model="field.value" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+                       item-value-key="code"
+                       item-view-value-key="name"
+                       items-method="searchSupplier(query)"
+                       items-method-value-key="suppliers"
+                       placeholder="Search supplier ..."
+                       items-clicked-method="supplierSelected(callback)"
+                       max-selected-items="1"/>
+
                 <select ng-if="field.type=='select'" ng-model="field.value" value="1">
                   <option ng-repeat="option in field.options">{{option}}</option>
                 </select>

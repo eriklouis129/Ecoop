@@ -11,7 +11,7 @@ angular.module('ecoop')
         {
             var _url = StringService.getURL(API_ENDPOINT.suppliers, params);
 
-            $ionicLoading.show({template: 'Login...'});
+            $ionicLoading.show({template: 'Loading...'});
 
             return $http({
                 url: _url,

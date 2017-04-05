@@ -17,3 +17,10 @@
 .main-title{
 	color:#FFFFFF;
 }
+
+.ion-autocomplete-container{
+	height: 60% !important;
+	.item-divider{
+		display: none !important;
+	}
+}
