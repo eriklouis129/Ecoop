@@ -40,29 +40,70 @@
 
         <div ng-if="activeSectionContractCustomerType==1">
           <h3 class="main-title">Persönliche Daten</h3>
-          <label ng-repeat="field in personalDataPrivateFields" class="item" ng-class="{'item-select': field.type == 'select', 'item-input': !(field.type == 'select')}">
+          <label ng-repeat="field in personalDataPrivateFields" class="item" ng-class="{'item-select': field.type == 'select' || field.type == 'cities', 'item-input': !(field.type == 'select')}">
             <span class="input-label">{{field.title}}</span>
+
             <select ng-if="field.type=='select'" ng-model="field.value" value="1">
               <option ng-repeat="option in field.options">{{option}}</option>
             </select>
+
+            <select ng-if="field.type=='cities'" ng-model="field.value" value="1">
+              <option ng-repeat="option in field.options">{{option.name}}</option>
+            </select>
+
             <input type="text" ng-if="field.type=='text'" ng-model="field.value">
+
+            <input type="number" ng-if="field.type=='zip'" ng-model="field.value" ng-change="searchCitiesByZip(field.value, activeSectionContractCustomerType)">
+
+            <input ion-autocomplete type="text" ng-if="field.type=='autocomplete'" ng-model="field.value" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+                       item-value-key="code"
+                       item-view-value-key="name"
+                       items-method="searchStreet(query, activeSectionContractCustomerType)"
+                       items-method-value-key="streets"
+                       placeholder="Search street ..."
+                       items-clicked-method="streetSelected(callback)"
+                       max-selected-items="1"/>
+
             <input type="date" ng-if="field.type=='date'" ng-model="field.value">
+
             <input type="tel" ng-if="field.type=='tel'" ng-model="field.value">
+
             <input type="email" ng-if="field.type=='email'" ng-model="field.value">
+
           </label>
           <ion-toggle toggle-class="toggle-positive">Beitrittsgebühr erlassen</ion-toggle>
         </div>
 
         <div ng-if="activeSectionContractCustomerType == 2">
           <h3 class="main-title">Persönliche Daten</h3>
-          <label ng-repeat="field in personalDataBusinessFields" class="item" ng-class="{'item-select': field.type == 'select', 'item-input': !(field.type == 'select')}">
+          <label ng-repeat="field in personalDataBusinessFields" class="item" ng-class="{'item-select': field.type == 'select' || field.type == 'cities', 'item-input': !(field.type == 'select')}">
             <span class="input-label">{{field.title}}</span>
+
             <select ng-if="field.type=='select'" ng-model="field.value" value="1">
               <option ng-repeat="option in field.options">{{option}}</option>
             </select>
+
+            <select ng-if="field.type=='cities'" ng-model="field.value" value="1">
+              <option ng-repeat="option in field.options">{{option.name}}</option>
+            </select>
+
             <input type="text" ng-if="field.type=='text'" ng-model="field.value">
+
+            <input type="number" ng-if="field.type=='zip'" ng-model="field.value" ng-change="searchCitiesByZip(field.value, activeSectionContractCustomerType)">
+
+            <input ion-autocomplete type="text" ng-if="field.type=='autocomplete'" ng-model="field.value" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+                       item-value-key="code"
+                       item-view-value-key="name"
+                       items-method="searchStreet(query, activeSectionContractCustomerType)"
+                       items-method-value-key="streets"
+                       placeholder="Search street ..."
+                       items-clicked-method="streetSelected(callback)"
+                       max-selected-items="1"/>
+
             <input type="date" ng-if="field.type=='date'" ng-model="field.value">
+
             <input type="tel" ng-if="field.type=='tel'" ng-model="field.value">
+
             <input type="email" ng-if="field.type=='email'" ng-model="field.value">
           </label>
           <ion-toggle toggle-class="toggle-positive">Beitrittsgebühr erlassen</ion-toggle>

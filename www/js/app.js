@@ -102,15 +102,15 @@ angular.module('ecoop', ['ionic', 'ionicUIRouter', 'ion-autocomplete'])
 
 
     //search tab
-    .state('app.tab.search', {
-      url: '/search',
-      views: {
-        'tab-search': {
-          templateUrl: 'templates/views/search.html',
-          controller: 'SearchController'
-        }
-      }
-    })
+    // .state('app.tab.search', {
+    //   url: '/search',
+    //   views: {
+    //     'tab-search': {
+    //       templateUrl: 'templates/views/search.html',
+    //       controller: 'SearchController'
+    //     }
+    //   }
+    // })
 
     
 

@@ -64,7 +64,7 @@ angular.module('ecoop')
 
 
 
-    $scope.clickedValueModel = "";
+    // $scope.clickedValueModel = "";
     var inputChangedPromise;
     $scope.searchSupplier = function (query) {
 

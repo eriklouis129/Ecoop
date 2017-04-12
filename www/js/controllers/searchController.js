@@ -1,7 +1,7 @@
-angular.module('ecoop')
+// angular.module('ecoop')
 
-.controller('SearchController', function($scope, $state, $ionicViewSwitcher, $ionicHistory)	{
+// .controller('SearchController', function($scope, $state, $ionicViewSwitcher, $ionicHistory)	{
 
 	
 
-})
+// })

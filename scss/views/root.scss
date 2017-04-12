@@ -24,3 +24,10 @@
 		display: none !important;
 	}
 }
+
+.loading-container{
+	z-index: 100 !important;
+}
+.backdrop-loading{
+	z-index: 99 !important;
+}

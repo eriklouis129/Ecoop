@@ -1,7 +1,8 @@
 angular.module('ecoop')
 
-.controller('ContractController', function($scope, $ionicHistory, $ionicScrollDelegate)	{
+.controller('ContractController', function($scope, $ionicHistory, $ionicScrollDelegate, $q, $timeout, ApiService)	{
 
+	$scope.cities = [];
 
 	$scope.personalDataPrivateFields = [
 		{title: 'Anrede', type: 'select', value: '', options: ['kein', 'Herr', 'Frau', 'Firma', 'Familie', 'Herr und Frau']}, 
@@ -9,10 +10,10 @@ angular.module('ecoop')
 		{title: 'Vorname', type: 'text', value: ''}, 
 		{title: 'Nachname', type: 'text', value: ''}, 
 		{title: 'Geburtstag', type: 'date', value: ''}, 
-		{title: 'Postleitzahl', type: 'text', value: ''}, 
-		{title: 'Ort', type: 'text', value: ''}, 
+		{title: 'Postleitzahl', type: 'zip', value: ''}, 
+		{title: 'Ort', type: 'cities', value: '', options: $scope.cities}, 
 		{title: 'Kreis', type: 'text', value: ''}, 
-		{title: 'Straße', type: 'text', value: ''}, 
+		{title: 'Straße', type: 'autocomplete', value: ''}, 
 		{title: 'Hausnummer', type: 'text', value: ''}, 
 		{title: 'Zusatz', type: 'text', value: ''}, 
 		{title: 'Telefon', type: 'tel', value: ''}, 
@@ -26,10 +27,10 @@ angular.module('ecoop')
 		{title: 'Ansprechpartner Titel', type: 'select', value: '', options: ['kein', 'Dr.', 'Prof.', 'Prof. Dr.', 'Dr. Dr.', 'Dipl.-Kfm.', 'Dipl.-Med.', 'Dipl.-Ing.', 'Dr. Ing.', 'MR Dr.', 'OMR Dr.', 'Prof. Dr. Dr.', 'Prof. Dr. Ing.']}, 
 		{title: 'Ansprechpartner Vorname', type: 'text', value: ''}, 
 		{title: 'Ansprechpartner Nachname', type: 'text', value: ''}, 
-		{title: 'Postleitzahl', type: 'text', value: ''}, 
-		{title: 'Ort', type: 'text', value: ''}, 
+		{title: 'Postleitzahl', type: 'zip', value: ''}, 
+		{title: 'Ort', type: 'cities', value: '', options: $scope.cities}, 
 		{title: 'Kreis', type: 'text', value: ''}, 
-		{title: 'Straße', type: 'text', value: ''}, 
+		{title: 'Straße', type: 'autocomplete', value: ''}, 
 		{title: 'Hausnummer', type: 'text', value: ''}, 
 		{title: 'Zusatz', type: 'text', value: ''},
 		{title: 'Telefon', type: 'tel', value: ''},
@@ -83,6 +84,77 @@ angular.module('ecoop')
 		{title: 'Hausnummer', type: 'text', value: ''}, 
 		{title: 'Zusatz', type: 'text', value: ''},
 	];
+
+
+	var inputChangedPromise;
+    $scope.searchCitiesByZip = function (query, type) {
+
+        if(inputChangedPromise){
+            $timeout.cancel(inputChangedPromise);
+        }
+        inputChangedPromise = $timeout(function() {
+            if (query) {
+
+                ApiService.getCitiesByZip([query]).then(
+                    function(resSuccess){
+                    	var fields = type == 1 ? $scope.personalDataPrivateFields: $scope.personalDataBusinessFields;
+		            	fields.forEach(function(item){
+		            		if (item['type'] == 'cities')
+		            			item['options'] = resSuccess.data;
+		            	})
+                    }, function(resError){
+                    }
+                )
+            }
+        },1000);
+
+    };
+
+    $scope.searchStreet = function (query, type) {
+
+        var defer = $q.defer();
+
+        if(inputChangedPromise){
+            $timeout.cancel(inputChangedPromise);
+        }
+        inputChangedPromise = $timeout(function() {
+            if (query) {
+
+                var zip_code;
+                var fields = type == 1 ? $scope.personalDataPrivateFields: $scope.personalDataBusinessFields;
+            	fields.forEach(function(item){
+            		if (item['title'] == 'Postleitzahl')
+            			zip_code = item['value'];
+            	})
+
+                var name = query;
+
+                ApiService.getStreets([zip_code, name]).then(
+                    function(resSuccess){
+                        if (resSuccess.data instanceof Array){
+                            defer.resolve({streets: resSuccess.data});
+                        }else if(typeof resSuccess.data === 'string'){
+                            defer.resolve({streets: [{name: resSuccess.data, code: "-1"}]});
+                        }
+                    }, function(resError){
+                        defer.reject(resError);
+                    }
+                )
+            }else{
+                defer.resolve({streets: []});
+            }
+        },1000);
+
+        return defer.promise;
+    };
+
+    // $scope.supplierSelected = function (callback) {
+    //     // $scope.clickedValueModel = callback;
+    //     $scope.data4[1]['value'] = callback['item']['code'];
+    // };
+
+
+
 
 
 	$scope.showContractSearchForm = false;

@@ -9836,6 +9836,12 @@ a.button {
   .ion-autocomplete-container .item-divider {
     display: none !important; }
 
+.loading-container {
+  z-index: 100 !important; }
+
+.backdrop-loading {
+  z-index: 99 !important; }
+
 #login {
   background: url(https://s3.amazonaws.com/ionic-io-static/vTI4DxdHQbmH3prDjfkG_lady.png) no-repeat center;
   background-size: cover; }

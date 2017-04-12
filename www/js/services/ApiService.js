@@ -30,8 +30,57 @@ angular.module('ecoop')
             })
         };
 
+        var getCitiesByZip = function(params)
+        {
+            var _url = StringService.getURL(API_ENDPOINT.cities, params);
+
+            $ionicLoading.show({template: 'Loading...'});
+
+            return $http({
+                url: _url,
+                headers: _headers,
+                method: 'GET'
+            })
+            .success(function(success){
+                $ionicLoading.hide();
+                console.log('----- success getCities -----')
+                console.log(success)
+            })
+            .error(function(error){
+                $ionicLoading.hide();
+                console.log('----- failed getCities -----')
+                console.log(error)
+            })
+        };
+
+        var getStreets = function(params)
+        {
+            var _url = StringService.getURL(API_ENDPOINT.streets, params);
+
+            $ionicLoading.show({template: 'Loading...'});
+
+            return $http({
+                url: _url,
+                headers: _headers,
+                method: 'GET'
+            })
+            .success(function(success){
+                $ionicLoading.hide();
+                console.log('----- success getStreets -----')
+                console.log(success)
+            })
+            .error(function(error){
+                $ionicLoading.hide();
+                console.log('----- failed getStreets -----')
+                console.log(error)
+            })
+        };
+
         return {
-            getSuppliers:       getSuppliers
+            getSuppliers:       getSuppliers,
+            getCitiesByZip:     getCitiesByZip,
+            getStreets:         getStreets
+
         };
     })
 
