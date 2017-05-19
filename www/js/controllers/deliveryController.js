@@ -76,7 +76,7 @@ angular.module('ecoop')
         inputChangedPromise = $timeout(function() {
             if (query) {
 
-                var energy_type = CONSTANTS.energy_types[$scope.activeSectionTariffEnergyType - 1];
+                var energy_type = CONSTANTS.ENERGY_TYPE[$scope.activeSectionTariffEnergyType - 1];
                 var name = query;
 
                 ApiService.getSuppliers([energy_type, name]).then(
